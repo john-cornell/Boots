@@ -8,7 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JC.GPT.NET" Version="1.0.2" />
+    <PackageReference Include="JC.GPT.NET" Version="1.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Boots.Agents\Boots.Agents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

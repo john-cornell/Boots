@@ -1,10 +1,10 @@
-﻿<Window x:Class="GPTEngine.Text.MainWindow"
+﻿<Window x:Class="Boots.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="We Are The GPT"
+        Title="We Are GPT"
         Margin="20"
         Padding="20"
         Height="450"
@@ -27,31 +27,28 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="InputTextBox" Grid.Column="0" Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch"
-                         HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Background="#E6F2FF" MinLines="5" MaxLines="5" TextWrapping="Wrap" Margin="0, 5, 0, 5"
-                         MinHeight="30" MaxHeight="30" FontFamily="Consolas" FontSize="14">
+                         HorizontalAlignment="Stretch" VerticalContentAlignment="Top" Background="#E6F2FF" TextWrapping="Wrap" Margin="0, 5, 0, 5"
+                         MinHeight="100" MaxHeight="100" FontFamily="Consolas" FontSize="14">
                     <TextBox.InputBindings>
-                        <KeyBinding Command="{Binding Path=SendToGPT}" Key="Enter" CommandParameter="{Binding Text, ElementName=InputTextBox}"/>
+                        <!--<KeyBinding Command="{Binding Path=SendToGPT}" Key="Enter" CommandParameter="{Binding Text, ElementName=InputTextBox}"/>-->
                     </TextBox.InputBindings>
                 </TextBox>
                 <Button Grid.Row="0" Grid.Column="1" Content="Send" Command="{Binding SendToGPT}" CommandParameter="{Binding Text, ElementName=InputTextBox}" Margin="5,0,0,0" Padding="10,5" Background="#4CAF50" Foreground="White"/>
             </Grid>
         </Border>
-        <ListView Grid.Row="1" ItemsSource="{Binding History}" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="5" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontFamily="Consolas" FontSize="14">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding LineNumber}" FontWeight="Bold" Margin="0,0,10,0"/>
-                        <TextBox Grid.Column="1" Text="{Binding Code}" TextWrapping="Wrap" IsReadOnly="True" BorderThickness="0" Background="Transparent" Foreground="Black"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="1" ItemsSource="{Binding History}" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                      Margin="5" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontFamily="Consolas" FontSize="14">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" Background="Transparent" Foreground="Black"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
