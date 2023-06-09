@@ -21,7 +21,7 @@ namespace Boots.ViewModels
     internal class MainViewModel : ViewModel
     {
         private readonly GPT _gpt;
-
+        
         public ICommand SendToGPT { get; set; }
 
 
